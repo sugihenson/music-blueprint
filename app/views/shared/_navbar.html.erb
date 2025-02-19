@@ -1,11 +1,12 @@
 <div class="navbar fixed top-0 left-0bg-base-100">
   <div class="flex-1">
-    <a class="btn btn-ghost text-xl text-white">Music Template</a>
-  </div>
+    <%= link_to "SoundVault", root_path, class:"text-xl font-semibold ms-1" %>  </div>
   <div class="flex-none">
-    <ul class="menu menu-horizontal px-1">
-      <li><a class="btn btn-outline text-white mx-3 hover:text-primary">Login</a></li>
-      <li><a class= "btn btn-primary border-none">Sign Up</a></li>
-    </ul>
+    <% if user_signed_in? %>
+			<%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-primary btn-outline" %>
+	  <% else %>
+      <%= link_to "Login", new_user_session_path, class:"btn btn-primary btn-outline mx-2" %>
+      <%= link_to "Sign up", new_user_registration_path, class:"btn btn-primary" %>
+		<% end %>
   </div>
 </div>
